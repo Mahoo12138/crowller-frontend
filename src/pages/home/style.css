@@ -1,0 +1,12 @@
+.home-page {
+  width: 1000px;
+  margin: 100px auto;
+  border: 1px solid #b0b0b0;
+  border-radius: 20px;
+  padding: 20px 30px;
+  text-align: center;
+}
+.button-list {
+  width: 300px;
+  margin: 5px auto 15px;
+}
