@@ -27,7 +27,11 @@ class Home extends Component {
   };
   componentDidMount() {
     http.get("/api/islogin").then(({ data }) => {
+<<<<<<< HEAD
       if (!data) {
+=======
+      if (!data.data) {
+>>>>>>> 7ada4ab36a41b86328fe5e32495b6e0ea07e6bff
         // 没有登录
         this.setState({ isLogin: false });
       } else {
@@ -43,7 +47,11 @@ class Home extends Component {
 
   handleCrowller = () => {
     http.get("/api/data").then(({ data }) => {
+<<<<<<< HEAD
       if (data) {
+=======
+      if (data.data) {
+>>>>>>> 7ada4ab36a41b86328fe5e32495b6e0ea07e6bff
         message.success("爬取成功");
       }
     });
