@@ -2,7 +2,7 @@ import { Form, Input, Button, message } from "antd";
 import qs from "qs";
 import { LockOutlined } from "@ant-design/icons";
 import "./style.css";
-import axios from "axios";
+import http from "../../common/request";
 import { Component } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ class Login extends Component {
   };
 
   onFinish = (values: { password: string }) => {
-    axios
+    http
       .post(
         "/api/login",
         qs.stringify({
