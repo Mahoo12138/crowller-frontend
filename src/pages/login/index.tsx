@@ -2,7 +2,7 @@ import { Form, Input, Button, message } from "antd";
 import qs from "qs";
 import { LockOutlined } from "@ant-design/icons";
 import "./style.css";
-import axios from "axios";
+import http from "../../common/request";
 import { Component } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ class Login extends Component {
   };
 
   onFinish = (values: { password: string }) => {
-    axios
+    http
       .post(
         "/api/login",
         qs.stringify({
@@ -24,11 +24,11 @@ class Login extends Component {
       )
       .then(({ data }) => {
         console.log(data);
-        if (data.data) {
+        if (data) {
           this.setState({
             isLogin: true,
           });
-          message.success("登录成功", 1);
+          message.success("登录成功");
         } else {
           message.error("密码错误");
         }

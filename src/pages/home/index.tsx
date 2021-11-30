@@ -3,7 +3,7 @@ import { Component } from "react";
 import moment from "moment";
 import { Navigate } from "react-router-dom";
 import ReactECharts from "echarts-for-react";
-import axios from "axios";
+import http from "../../common/request";
 import "./style.css";
 
 interface CourseItem {
@@ -26,15 +26,15 @@ class Home extends Component {
     data: {},
   };
   componentDidMount() {
-    axios.get("/api/islogin").then(({ data }) => {
-      if (!data.data) {
+    http.get("/api/islogin").then(({ data }) => {
+      if (!data) {
         // 没有登录
         this.setState({ isLogin: false });
       } else {
         this.setState({ inited: true });
       }
     });
-    axios.get("/api/show").then(({ data }) => {
+    http.get("/api/show").then(({ data }) => {
       this.setState({
         data,
       });
@@ -42,8 +42,8 @@ class Home extends Component {
   }
 
   handleCrowller = () => {
-    axios.get("/api/data").then(({ data }) => {
-      if (data.data) {
+    http.get("/api/data").then(({ data }) => {
+      if (data) {
         message.success("爬取成功");
       }
     });
@@ -106,9 +106,9 @@ class Home extends Component {
   }
 
   handleLogout = () => {
-    axios.get("/api/logout").then(({ data }) => {
+    http.get("/api/logout").then(({ data }) => {
       console.log(data);
-      if (data.data) {
+      if (data) {
         this.setState({ isLogin: false });
       } else {
         message.error("退出失败");
